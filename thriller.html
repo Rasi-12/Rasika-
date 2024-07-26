@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="thri.css">
+<body>
+    <div class="page-container">
+        <div class="genre-page" id="thriller">
+            <h2>Thriller Books</h2>
+            <ul>
+                <li><a href="https://usuaris.tinet.cat/palonso/llibres/harris/the_silence_of_the_lambs.pdf" target="_blank"> * The Silence Of The Lambs </a><br>
+                <button class="wish-button" onclick="addToWishlist('The Silence Of The Lambs')">Add to My Books</button></li>
+                <li><a href="https://whsmith.com.au/wp-content/uploads/2019/02/The-Silent-Patient-first-chaper.pdf" target="_blank"> * The Silent Patient</a><br>
+                <button class="wish-button" onclick="addToWishlist('The Silent Patient')">Add to My Books</button></li>
+                <li><a href="https://gillian-flynn.freenovelread.com/page,2,30712-sharp-objects" target="_blank"> * Sharp Objects </a><br>
+                <button class="wish-button" onclick="addToWishlist('Sharp Objects')">Add to My Books</button></li>
+                <li><a href="http://files.hostgator.co.in/hostgator253199/file/thedavincicode-danbrown.pdf" target="_blank"> * The Da Vinci Code </a><br>
+                <button class="wish-button" onclick="addToWishlist('The Da Vinci Code')">Add to My Books</button></li>
+                <li><a href="https://everything830.wordpress.com/wp-content/uploads/2016/08/the_girl_on_the_train_-_paula_hawkins.pdf" target="_blank"> * The Girl on the Train </a><br>
+                <button class="wish-button" onclick="addToWishlist('The Girl on the Train')">Add to My Books</button></li>
+            </ul>
+            <button class="navigate-button" onclick="navigateBackToAdventure()">Previous Genre</button>
+        <button class="navigate-button" onclick="navigateToRomance()">Next Genre</button>
+    </div>
+    </div>
+        <script>
+        function navigateToRomance() {
+            sessionStorage.setItem('previousPage', 'thriller.html');
+            window.location.href = 'romance.html';
+        }
+        function navigateBackToAdventure() {
+            window.location.href = 'adventure.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>

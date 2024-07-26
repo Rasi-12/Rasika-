@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; 
+    background-image: url('https://d4804za1f1gw.cloudfront.net/wp-content/uploads/sites/50/2018/11/hero.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: #333; 
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    min-height: 100vh; 
+    padding: 20px;
+    position: relative; 
+}
+.genre-container {
+    width: 250px; 
+    background-color: rgba(114, 133, 141, 0.9); 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    position: absolute;
+    top: 50%; 
+    right: 20px; 
+    transform: translateY(-50%); 
+}
+
+.genre-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #3348b3; 
+}
+
+.genre-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.genre-container ul li {
+    margin-bottom: 15px;
+}
+
+.genre-container ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    background-color: #f8f8f8; 
+}
+
+.genre-container ul li a:hover {
+    background-color: #ad73739d; 
+}
+.books {
+    margin-left: 50px; 
+    flex: 1; 
+}
+
+.genre-section {
+    margin-top: 30px;
+}
+
+.genre-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #444; 
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.book {
+    width: calc(33.33% - 20px); 
+    margin: 10px;
+    text-align: center;
+    background-color: #fff; 
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease;
+}
+
+.book:hover {
+    transform: translateY(-5px); 
+}
+
+.book img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.book p {
+    font-size: 0.9rem;
+    color: #666; 
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: center; 
+    }
+
+    .genre-container {
+        position: static; 
+        width: 100%; 
+        margin-bottom: 20px;
+    }
+
+    .books {
+        margin-left: 0; 
+    }
+
+    .book {
+        width: calc(50% - 20px); 
+    }
+}
+
+
+
+
+

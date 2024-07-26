@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="adv.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="genre-page" id="adventure">
+            <h2>Adventure Books</h2>
+            <ul>
+                <li><a href="https://www.ibiblio.org/ebooks/Verne/Eighty_Days.pdf" target="_blank"> * Around the World in Eighty Days</a><br>
+                <button class="wish-button" onclick="addToWishlist('Around the World in Eighty Days')">Add to My Books</button></li>
+                <li><a href="http://giove.isti.cnr.it/demo/eread/Libri/joy/TSawyer.pdf" target="_blank"> * The Adventures of Tom Sawyer</a><br>
+                <button class="wish-button" onclick="addToWishlist('The Adventures of Tom Sawyer')">Add to My Books</button></li>
+                <li><a href="https://www1.udel.edu/LLL/language/deutsch/handouts/summer_2015/Schatzinsel_E.pdf" target="_blank"> * Treasure Island</a><br>
+                <button class="wish-button" onclick="addToWishlist('Treasure Island')">Add to My Books</button></li>
+                <li><a href="https://contentserver.adobe.com/store/books/HuckFinn.pdf" target="_blank"> * The Adventures of Huckleberry Finn</a><br>
+                <button class="wish-button" onclick="addToWishlist('The Adventures of Huckleberry Finn')">Add to My Books</button></li>
+                <li><a href="https://www.ibiblio.org/ebooks/London/Call%20of%20Wild.pdf" target="_blank"> * The Call of the Wild</a><br>
+                <button class="wish-button" onclick="addToWishlist('The Call of the Wild')">Add to My Books</button></li>
+                <li><a href="https://readerslibrary.org/wp-content/uploads/Jurassic-Park.pdf" target="_blank"> * Jurassic Park</a><br>
+                <button class="wish-button" onclick="addToWishlist('Jurassic Park')">Add to My Books</button></li>
+            </ul>
+            <button class="navigate-button" onclick="navigateBackToScifi()">Previous Genre</button>
+            <button class="navigate-button" onclick="navigateToThriller()">Next Genre</button>
+    </div>
+    </div>
+        <script>
+        function navigateToThriller() {
+            sessionStorage.setItem('previousPage', 'adventure.html');
+            window.location.href = 'thriller.html';
+        }
+        function navigateBackToScifi() {
+            window.location.href = 'scie fi.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>

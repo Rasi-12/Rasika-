@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books Wish List</title>
+    <link rel="stylesheet" href="mb.css">
+    <style>
+        /* Basic CSS for the wish list */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Center items vertically */
+        }
+        .remove-button {
+            background-color: #6a5a96;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h2>My Books Wish List</h2>
+    </center>
+    <ul id="wishlist">
+    </ul>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+            displayWishlist();
+        });
+
+        function displayWishlist() {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            let wishlistContainer = document.getElementById('wishlist');
+            wishlistContainer.innerHTML = ''; // Clear previous list items
+
+            wishlist.forEach(function(bookName) {
+                let li = document.createElement('li');
+                li.textContent = bookName;
+
+                // Create remove button
+                let removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromWishlist(bookName);
+                    displayWishlist(); // Update displayed wishlist after removal
+                };
+
+                // Append book name and remove button to list item
+                li.appendChild(document.createTextNode(' ')); // Add space
+                li.appendChild(removeButton);
+
+                wishlistContainer.appendChild(li);
+            });
+        }
+
+        function removeFromWishlist(bookName) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            let updatedWishlist = wishlist.filter(function(item) {
+                return item !== bookName;
+            });
+            localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+            alert('Removed ' + bookName + ' from your wish list.');
+        }
+        </script>
+</body>
+</html>

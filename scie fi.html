@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="sci.css">
+</head>
+<body>
+    <div class="page-container">
+    <div class="genre-page" id="science-fiction">
+        <h2>Science Fiction Books</h2>
+        <ul>
+            <li><a href="https://www.nothuman.net/images/files/discussion/1/0ed6dd58b519b04986adffca95500ec3.pdf" target="_blank"> *  Neuromancer </a><br>
+            <button class="wish-button" onclick="addToWishlist('Neuromancer')">Add to My Books</button></li>
+            <li><a href="https://s3.us-west-1.wasabisys.com/luminist/EB/A/Asimov%20-%20Foundation.pdf" target="_blank"> *   "Foundation" by Isaac Asimov</a><br>
+            <button class="wish-button" onclick="addToWishlist('Foundation by Isaac Asimov')">Add to My Books</button></li>
+            <li><a href="https://hell.pl/agnus/anglistyka/2211/Neal%20Stephenson%20-%20Snow%20Crash.pdf" target="_blank"> *   Snow Crash </a><br>
+            <button class="wish-button" onclick="addToWishlist('Snow Crash')">Add to My Books</button></li>
+            <li><a href="https://ia902702.us.archive.org/0/items/SpaceOdyssey_819/2001_A_Space_Odyssey_-_Arthur_C_Clarke.pdf" target="_blank"> * 2001: A Space Odyssey   </a><br>
+            <button class="wish-button" onclick="addToWishlist('2001: A Space Odyssey')">Add to My Books</button></li>
+            <li><a href="https://files.cercomp.ufg.br/weby/up/410/o/Phillip_K._Dick_-_Do_Androids_Dream_of_Electric_Sheep_c%C3%B3pia.pdf" target="_blank"> * Do Androids Dream of Electric Sheep? </a><br>
+            <button class="wish-button" onclick="addToWishlist('Do Androids Dream of Electric Sheep?')">Add to My Books</button></li>
+        </ul>
+        <button class="navigate-button" onclick="navigateBackToFantasy()">Previous Genre</button>
+        <button class="navigate-button" onclick="navigateToAdventure()">Next Genre</button>
+    </div>
+    </div>
+        <script>
+        function navigateToAdventure() {
+            sessionStorage.setItem('previousPage', 'scie fi.html');
+            window.location.href = 'adventure.html';
+        }
+        function navigateBackToFantasy() {
+            window.location.href = 'fantasy.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>

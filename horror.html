@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="ho.css">
+</head>
+<body>
+    <div class="page-container">
+    <div class="genre-page" id="horror">
+        <h2>Horror Books</h2>
+        <ul>
+            <li><a href="https://havenner.weebly.com/uploads/2/0/5/7/20575006/jackson-shirley-the-haunting-of-hill-house.pdf" target="_blank"> * The Haunting of Hill House </a><br>
+            <button class="wish-button" onclick="addToWishlist('The Haunting of Hill House')">Add to My Books</button></li>
+            <li><a href="https://www.ibiblio.org/ebooks/James/Turn_Screw.pdf" target="_blank"> * The Turn of the Screw </a><br>
+            <button class="wish-button" onclick="addToWishlist('The Turn of the Screw')">Add to My Books</button></li>
+            <li><a href="https://englishprofi.com.ua/wp-content/uploads/Stephen-King-The-Shining.pdf" target="_blank"> * The Shining </a><br>
+            <button class="wish-button" onclick="addToWishlist('The Shining')">Add to My Books</button></li>
+            <li><a href="https://assets.scriptslug.com/live/pdf/scripts/bird-box-2018.pdf" target="_blank"> * Bird Box </a><br>
+            <button class="wish-button" onclick="addToWishlist('Bird Box')">Add to My Books</button></li>
+            <li><a href="https://allnovel.net/misery/page-1.html" target="_blank"> * Misery </a><br>
+            <button class="wish-button" onclick="addToWishlist('Misery')">Add to My Books</button></li>
+        </ul>
+        <button class="navigate-button" onclick="navigateBackToRomance()">Previous Genre</button>
+        <button class="navigate-button" onclick="navigateToDetective()">Next Genre</button>
+    </div> 
+    </div>
+        <script>
+        function navigateToDetective() {
+            sessionStorage.setItem('previousPage', 'horror.html');
+            window.location.href = 'det and my.html';
+        }
+        function navigateBackToRomance() {
+            window.location.href = 'romance.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>

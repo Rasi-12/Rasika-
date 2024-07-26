@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="com.css">
+</head>
+<body>
+    <div class="page-container">
+    <div class="genre-page" id="comedy">
+        <h2>Comedy Books</h2>
+        <ul>
+            <li><a href="https://www.deyeshigh.co.uk/downloads/literacy/world_book_day/the_hitchhiker_s_guide_to_the_galaxy.pdf" target="_blank"> * Hitchhiker's Guide to the Galaxy</a><br>
+            <button class="wish-button" onclick="addToWishlist('Hitchhikers Guide to the Galaxy')">Add to My Books</button></li>
+            <li><a href="https://www.epedagogia.com.br/materialbibliotecaonine/3979The-Inimitable-Jeeves.pdf" target="_blank"> * The Inimitable Jeeves</a><br>
+            <button class="wish-button" onclick="addToWishlist('The Inimitable Jeeves')">Add to My Books</button></li>
+            <li><a href="https://adebiportal.kz/upload/iblock/ee1/ee19c186e42dae4eea0af713a096a28c.pdf" target="_blank"> * "Catch-22" by Joseph Heller</a><br>
+            <button class="wish-button" onclick="addToWishlist('Catch-22 by Joseph Heller')">Add to My Books</button></li>
+            <li><a href="https://almabooks.com/wp-content/uploads/2021/06/Three-Men-in-a-Boat-revised-text.pdf" target="_blank"> * Three Men in a Boat</a><br>
+            <button class="wish-button" onclick="addToWishlist('Three Men in a Boat')">Add to My Books</button></li>
+            <li><a href="https://www.sausd.us/cms/lib/CA01000471/Centricity/Domain/457/Me%20Talk%20Pretty%20One%20Day-David%20Sedaris.pdf" target="_blank"> * Me Talk Pretty One Day</a><br>
+            <button class="wish-button" onclick="addToWishlist('Me Talk Pretty One Day')">Add to My Books</button></li>
+            <li><a href="https://allnovel.net/lamb-the-gospel-according-to-biff-christ-s-childhood-pal/page-1.html" target="_blank"> * Lamb: The Gospel According to Biff, Christ's Childhood Pal</a><br>
+            <button class="wish-button" onclick="addToWishlist('Lamb: The Gospel According to Biff, Christs Childhood Pal')">Add to My Books</button></li>
+        </ul>
+        <button class="navigate-button" onclick="navigateBackToDetective()">Previous Genre</button>
+    </div>
+    </div>
+        <script>
+        function navigateBackToDetective() {
+            window.location.href = 'det and my.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>

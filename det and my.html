@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="type.css">
+    <link rel="stylesheet" href="de.css">
+</head>
+<body>
+    <div class="page-container">
+    <div class="genre-page" id="detective">
+        <h2>Detective and Mystery Books</h2>
+        <ul>
+            <li><a href="https://maggiemcneill.com/wp-content/uploads/2012/04/the-complete-sherlock-holmes.pdf" target="_blank"> * Sherlock Holmes Series </a><br>
+            <button class="wish-button" onclick="addToWishlist('Sherlock Holmes Series ')">Add to My Books</button></li>
+            <li><a href="http://files.hostgator.co.in/hostgator253199/file/3-themurderonthelinksaherculepoiro-agathachristie1923.pdf" target="_blank"> * Agatha Christie's Poirot Series </a><br>
+            <button class="wish-button" onclick="addToWishlist('Agatha Christie Poirot Series ')">Add to My Books</button></li>
+            <li><a href="https://gertrudesteinsite.wordpress.com/wp-content/uploads/2017/01/dashiell-hammett-the-maltese-falcon.pdf" target="_blank"> * The Maltese Falcon </a><br>
+            <button class="wish-button" onclick="addToWishlist('The Maltese Falcon')">Add to My Books</button></li>
+            <li><a href="https://d-pdf.com/electronic-book/4161" target="_blank"> * Tinker, Tailor, Soldier, Spy</a><br>
+            <button class="wish-button" onclick="addToWishlist('Tinker, Tailor, Soldier, Spy')">Add to My Books</button></li>
+            <li><a href="https://worldfabibooks.wordpress.com/wp-content/uploads/2013/10/the-cuckoo_s-calling-robert-galbraith-j-k-rowling.pdf" target="_blank"> * The Cuckoo's Calling </a><br>
+            <button class="wish-button" onclick="addToWishlist('The Cuckoo Calling ')">Add to My Books</button></li>
+        </ul>
+        <button class="navigate-button" onclick="navigateBackToDetective()">Previous Genre</button>
+        <button class="navigate-button" onclick="navigateToComedy()">Next Genre</button>
+        </div>
+    </div>
+        <script>
+        function navigateToComedy() {
+            sessionStorage.setItem('previousPage', 'det and my.html');
+            window.location.href = 'comedy.html';
+        }
+        function navigateBackToDetective() {
+            window.location.href = 'horror.html';
+        }
+        function addToWishlist(bookName) {
+            // Retrieve existing wish list or create a new one if it doesn't exist
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Check if the book is already in the wishlist
+            if (!wishlist.includes(bookName)) {
+                wishlist.push(bookName);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                alert('Added ' + bookName + ' to your wish list!');
+            } else {
+                alert(bookName + ' is already in your wish list!');
+            }
+        }
+    </script>
+</body>
+</html>
